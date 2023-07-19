@@ -31,9 +31,8 @@ class TextComposerState extends State<TextComposer> {
         children: [
           IconButton(onPressed: () async {
             final = File imgFile await ImagePicker.pickImage(source: ImageSource.camera);
-           if(imgFile == null){
-              return;
-            }
+           if(imgFile == null) return;
+           widget.sendMessage(imgFile: imgFile);
           }, icon: const Icon(Icons.photo_camera)),
           Expanded(
             child: TextField(
@@ -46,13 +45,13 @@ class TextComposerState extends State<TextComposer> {
                 });
               },
               onSubmitted: (text) {
-                widget.sendMessage(text);
+                widget.sendMessage(text: text );
                 _reset();
               },
             ),
           ),
           IconButton(onPressed: _isComposing ? (){
-            widget.sendMessage(_textController.text);
+            widget.sendMessage(text: _textController.text);
             _reset();
           } : null,
               icon: const Icon(Icons.send)),

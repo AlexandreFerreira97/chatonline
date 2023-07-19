@@ -8,7 +8,7 @@ class ChatScreen extends StatefulWidget {
 
   TextComposer(this.sendMessage);
 
-  late Function (String) sendMessage;
+  final Function ({String text, File imgFile}) sendMessage;
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -16,7 +16,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
 
-  void _sendMessage(String text, File imgFile){
+  void _sendMessage({String text, File imgFile}){
     FirebaseFirestore.instance.collection('messages').add({
       'text' : text
     });
