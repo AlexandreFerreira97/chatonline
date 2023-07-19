@@ -1,3 +1,4 @@
+import 'package:chatonline/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: Container(),
+      home: const ChatScreen(),
     );
   }
 }
