@@ -1,11 +1,14 @@
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main(){
-  FirebaseFirestore.instance.collection("col").doc("doc").set({"texto":"alex"});
+void main() async {
+  runApp(const MyApp());
 
-  runApp(MyApp());
+  QuerySnapshot snapshot = await FirebaseFirestore.instance.collection('mensagens').get();
+  snapshot.docs.forEach((d) {
+    print(d.data);
+  });
+
 }
 
 class MyApp extends StatelessWidget {
