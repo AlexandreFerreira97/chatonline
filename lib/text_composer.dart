@@ -26,7 +26,9 @@ class TextComposerState extends State<TextComposer> {
       margin: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.photo_camera)),
+          IconButton(onPressed: () {
+            ImagePicker
+          }, icon: const Icon(Icons.photo_camera)),
           Expanded(
             child: TextField(
               controller: _textController,
