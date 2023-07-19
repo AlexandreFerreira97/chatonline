@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:chatonline/text_composer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
 
-  void _sendMessage(String text){
+  void _sendMessage(String text, File imgFile){
     FirebaseFirestore.instance.collection('messages').add({
       'text' : text
     });
