@@ -14,6 +14,7 @@ class TextComposerState extends State<TextComposer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.photo_camera)),
