@@ -9,6 +9,8 @@ class TextComposer extends StatefulWidget {
 
 class TextComposerState extends State<TextComposer> {
 
+  final TextEditingController _textController = TextEditingController();
+
   bool _isComposing = false;
 
   @override
@@ -20,6 +22,7 @@ class TextComposerState extends State<TextComposer> {
           IconButton(onPressed: () {}, icon: const Icon(Icons.photo_camera)),
           Expanded(
             child: TextField(
+              controller: _textController,
               decoration: const InputDecoration.collapsed(
                   hintText: 'Enviar uma mensagem'),
               onChanged: (text) {
@@ -27,10 +30,14 @@ class TextComposerState extends State<TextComposer> {
                   _isComposing = text.isNotEmpty;
                 });
               },
-              onSubmitted: (text) {},
+              onSubmitted: (text) {
+                widget.sendMessage(text);
+              },
             ),
           ),
-          IconButton(onPressed: _isComposing ? (){} : null,
+          IconButton(onPressed: _isComposing ? (){
+            widget.sendMessage(_textController.text);
+          } : null,
               icon: const Icon(Icons.send)),
         ],
       ),

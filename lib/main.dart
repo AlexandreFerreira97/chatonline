@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           color: Colors.blue,
         ),
       ),
-      home: const ChatScreen(),
+      home: ChatScreen(),
     );
   }
 }

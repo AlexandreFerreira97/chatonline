@@ -2,7 +2,10 @@ import 'package:chatonline/text_composer.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+
+  TextComposer(this.sendMessage);
+
+  late Function (String) sendMessage;
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -16,7 +19,11 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Text('Olá'),
         elevation: 0,
       ),
-      body: const TextComposer(),
+      body: const TextComposer(
+          (text){
+
+          }
+      ),
     );
   }
 }
