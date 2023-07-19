@@ -14,12 +14,15 @@ class TextComposerState extends State<TextComposer> {
       child: Row(
         children: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.photo_camera)),
-          const Expanded(
+          Expanded(
             child: TextField(
-              decoration:
-                  InputDecoration.collapsed(hintText: 'Enviar uma mensagem'),
+              decoration: const InputDecoration.collapsed(
+                  hintText: 'Enviar uma mensagem'),
+              onChanged: (text) {},
+              onSubmitted: (text) {},
             ),
           ),
+          IconButton(onPressed: (){}, icon: const Icon(Icons.send)),
         ],
       ),
     );
