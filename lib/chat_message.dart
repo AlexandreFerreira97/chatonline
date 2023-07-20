@@ -15,6 +15,8 @@ class ChatMessage extends StatelessWidget {
           Expanded(
               child: Column(
             children: [
+              data['imgUrl'] != null ? Image.network(data['imgUrl']) :
+              Text (data['text'], style: const TextStyle(fontSize: 16.0)),
               Text(
                 data['senderName'],
                 style: const TextStyle(
