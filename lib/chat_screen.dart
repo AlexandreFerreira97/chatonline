@@ -16,12 +16,15 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
 
-  void _sendMessage({String text, File imgFile}){
+  void _sendMessage({String text, File imgFile}) async {
 
     if(imgFile != null){
       StorageUploadTask task = FirebaseStorage.instance.ref().child(
           DateTime.now().millisecondsSinceEpoch.toString()
       ).putFile(imgFile);
+
+      StorageTaskSnapshot taskSnapshot =  await task.onComplete;
+      String url = await taskSnapshot.ref.getDownloadURL();
     }
 
     FirebaseFirestore.instance.collection('messages').add({
