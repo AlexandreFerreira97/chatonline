@@ -72,6 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
       'uid': user.uid,
       'senderName': user.displayName,
       'senderPhotoUrl': user.PhotoUrl,
+      'time' : Timestamp.now(),
     };
 
     if(imgFile != null){
@@ -113,7 +114,7 @@ class _ChatScreenState extends State<ChatScreen> {
         children: [
           Expanded(child:
             StreamBuilder(
-              stream: Firestore.instance.collection('messages').snapshots(),
+              stream: Firestore.instance.collection('messages').orderBy('time').snapshots(),
               builder: (context, snapshot){
                 switch(snapshot.connectionState){
                   case ConnectionState.none:
