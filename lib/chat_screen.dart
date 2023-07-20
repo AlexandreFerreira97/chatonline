@@ -30,6 +30,11 @@ class _ChatScreenState extends State<ChatScreen> {
         idToken: googleSignInAuthentication.idToken,
         accessToken: googleSignInAuthentication.accessToken,
       );
+
+      final AuthResult authResult = await FirebaseAuth.instance.signInWithCredential(credential);
+
+      final FirebaseUser user = authResult.user;
+
     } catch(e){
 
     }
