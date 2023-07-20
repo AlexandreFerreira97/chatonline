@@ -2,8 +2,10 @@ import 'dart:html';
 import 'dart:io';
 import 'package:chatonline/text_composer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class ChatScreen extends StatefulWidget {
 
@@ -16,6 +18,19 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+
+  void _getUser() async {
+    try{
+      final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+      
+      final AuthCredential credential =
+    } catch(e){
+
+    }
+  }
 
   void _sendMessage({String text, File imgFile}) async {
 
