@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'dart:io';
 import 'package:chatonline/text_composer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -43,8 +44,38 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Text('Olá'),
         elevation: 0,
       ),
-      body: const TextComposer(
-      ),
+      body: Column(
+        children: [
+          Expanded(child:
+            StreamBuilder(
+              stream: Firestore.instance.collection('messages').snapshots(),
+              builder: (context, snapshot){
+                switch(snapshot.connectionState){
+                  case ConnectionState.none:
+                  case ConnectionState.waiting:
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  default:
+                    List<DocumeentSnaphot> documents = snapshot.data.documents;
+
+                    return ListView.builder(
+                      itemCount: document.length,
+                      reverse: true,
+                      itemBuilder: (context, snapshot){
+                        return ListTile(
+                          title: Text(documents[index].data['texto']),
+                        );
+                      },
+                    );
+                }
+              },
+            ),
+          ),
+          const TextComposer(
+          ),
+        ],
+      )
     );
   }
 }
