@@ -57,14 +57,14 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: CircularProgressIndicator(),
                     );
                   default:
-                    List<DocumeentSnaphot> documents = snapshot.data.documents;
+                    List<DocumentSnaphot> documents = snapshot.data.documents;
 
                     return ListView.builder(
                       itemCount: document.length,
                       reverse: true,
                       itemBuilder: (context, snapshot){
                         return ListTile(
-                          title: Text(documents[index].data['texto']),
+                          title: Text(documents[index].data['text']),
                         );
                       },
                     );
