@@ -21,6 +21,17 @@ class _ChatScreenState extends State<ChatScreen> {
 
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
+  FirebaseUser _currentUser;
+
+  @override
+  void initSate() {
+    super.initState();
+
+    FirebaseAuth.instance.onAuthStateChanged.listen((user){
+      _currentUser = user;
+    });
+  }
+
   void _getUser() async {
     try{
       final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
@@ -35,12 +46,17 @@ class _ChatScreenState extends State<ChatScreen> {
 
       final FirebaseUser user = authResult.user;
 
+      return user;
     } catch(e){
-
+      return null;
     }
   }
 
-  void _sendMessage({String text, File imgFile}) async {
+  Future<FirebaseUser> _sendMessage({String text, File imgFile}) async {
+
+    if(_currentUser != null) return _currentUser;
+
+    final FirebaseUser user = await _getUser();
 
     Map<String, dynamic> data = {};
 
