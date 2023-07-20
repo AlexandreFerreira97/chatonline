@@ -18,6 +18,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void _sendMessage({String text, File imgFile}) async {
 
+    Map<String, dynamic> data = {};
+
     if(imgFile != null){
       StorageUploadTask task = FirebaseStorage.instance.ref().child(
           DateTime.now().millisecondsSinceEpoch.toString()
@@ -25,11 +27,13 @@ class _ChatScreenState extends State<ChatScreen> {
 
       StorageTaskSnapshot taskSnapshot =  await task.onComplete;
       String url = await taskSnapshot.ref.getDownloadURL();
+      data['imgUrl'] = url;
     }
 
-    FirebaseFirestore.instance.collection('messages').add({
-      'text' : text
-    });
+    if(text != null) data['text'] = text;
+
+    FirebaseFirestore.instance.collection('messages').add(data);
+
   }
 
   @override
