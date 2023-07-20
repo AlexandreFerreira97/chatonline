@@ -11,7 +11,10 @@ class ChatMessage extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       child: Row(
         children: [
-          CircleAvatar(backgroundImage: NetworkImage(data['senderPhotoUrl'])),
+          Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: CircleAvatar(backgroundImage: NetworkImage(data['senderPhotoUrl']))
+          ),
           Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
