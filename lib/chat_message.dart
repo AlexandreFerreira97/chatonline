@@ -14,6 +14,7 @@ class ChatMessage extends StatelessWidget {
           CircleAvatar(backgroundImage: NetworkImage(data['senderPhotoUrl'])),
           Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               data['imgUrl'] != null ? Image.network(data['imgUrl']) :
               Text (data['text'], style: const TextStyle(fontSize: 16.0)),

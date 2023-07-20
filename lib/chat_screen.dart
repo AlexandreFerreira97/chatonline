@@ -1,5 +1,6 @@
 import 'dart:html';
 import 'dart:io';
+import 'package:chatonline/chat_message.dart';
 import 'package:chatonline/text_composer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
