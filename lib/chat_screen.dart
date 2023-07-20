@@ -25,8 +25,11 @@ class _ChatScreenState extends State<ChatScreen> {
     try{
       final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
       final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
-      
-      final AuthCredential credential =
+
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
+        idToken: googleSignInAuthentication.idToken,
+        accessToken: googleSignInAuthentication.accessToken,
+      );
     } catch(e){
 
     }
